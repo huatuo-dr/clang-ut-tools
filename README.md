@@ -436,10 +436,17 @@ static void test_expression_normal(void **state) {
 
 #### 7.1 实现原理
 
-使用 `--wrap` 时，链接器会提供 `__real_xxx` 让你访问原始函数：
+使用 `-Wl,--wrap=func` 链接选项时，**GCC链接器会自动生成两个符号**：
+
+| 符号 | 来源 | 说明 |
+|------|------|------|
+| `__wrap_func` | 需要你定义 | 替换原函数的包装函数 |
+| `__real_func` | **链接器自动生成** | 指向原始函数实现，无需手动定义 |
+
+因此，代码中只需用 `extern` 声明 `__real_xxx`，链接器会自动解析：
 
 ```c
-// 声明原始函数
+// 声明原始函数（链接器自动提供，无需定义函数体）
 extern int __real_calc_add(int a, int b);
 
 // Mock控制标志
