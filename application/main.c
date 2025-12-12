@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "calc.h"
 #include "greeting.h"
+#include "multi-calc.h"
 
 void test_calculator() {
     printf("\n=== Calculator Test ===\n");
@@ -37,6 +38,33 @@ void test_greeting() {
     printf("%s\n", say_goodbye(NULL));
 }
 
+void test_multi_calculator() {
+    printf("\n=== Multi-Calculator Test ===\n");
+
+    // Test multi_calc_expression: (a + b) * (c - d)
+    int a = 2, b = 3, c = 10, d = 4;
+    printf("Testing expression (a + b) * (c - d):\n");
+    printf("  a = %d, b = %d, c = %d, d = %d\n", a, b, c, d);
+    printf("  (%d + %d) * (%d - %d) = %d\n", a, b, c, d, multi_calc_expression(a, b, c, d));
+
+    // Another example
+    a = 5; b = 5; c = 8; d = 3;
+    printf("  a = %d, b = %d, c = %d, d = %d\n", a, b, c, d);
+    printf("  (%d + %d) * (%d - %d) = %d\n", a, b, c, d, multi_calc_expression(a, b, c, d));
+
+    // Test multi_calc_average: (a + b + c) / 3
+    printf("\nTesting average (a + b + c) / 3:\n");
+    int x = 10, y = 20, z = 30;
+    printf("  average(%d, %d, %d) = %d\n", x, y, z, multi_calc_average(x, y, z));
+
+    x = 7; y = 8; z = 9;
+    printf("  average(%d, %d, %d) = %d\n", x, y, z, multi_calc_average(x, y, z));
+
+    // Edge case: result with truncation
+    x = 1; y = 1; z = 1;
+    printf("  average(%d, %d, %d) = %d\n", x, y, z, multi_calc_average(x, y, z));
+}
+
 int main(int argc, char *argv[]) {
     printf("====================================\n");
     printf("   CMocka Project - Application\n");
@@ -51,6 +79,7 @@ int main(int argc, char *argv[]) {
 
     // Run tests
     test_calculator();
+    test_multi_calculator();
     test_greeting();
 
     printf("\n====================================\n");

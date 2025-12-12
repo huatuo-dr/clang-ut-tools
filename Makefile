@@ -26,6 +26,7 @@ SDK_INSTALL_LIB_DIR := $(SDK_INSTALL_DIR)/lib
 # Include sub-makefiles
 include sdk/sdk.mk
 include application/application.mk
+include ut/ut.mk
 
 # Default target
 .PHONY: all
@@ -44,5 +45,7 @@ help:
 	@echo "  make sdk_install - Build and install SDK to build directory"
 	@echo "  make app         - Build application executable"
 	@echo "  make run         - Build and run the application"
+	@echo "  make ut          - Build and run unit tests"
+	@echo "  make ut_build    - Build unit tests only (without running)"
 	@echo "  make clean       - Remove all build artifacts"
 	@echo "  make help        - Display this help message"
