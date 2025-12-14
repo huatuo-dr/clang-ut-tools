@@ -3,7 +3,11 @@ output/
 build/
 dist/
 
-3rdparty/cmocka-2.0.0/
+3rdparty/cmocka-*/
+3rdparty/Unity-*/
+3rdparty/fff-*/
+3rdparty/googletest-*/
+3rdparty/mockcpp*/
 
 # Object files
 *.o
