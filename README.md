@@ -90,9 +90,13 @@ make run           # 运行应用
 ### 运行测试
 
 ```shell
+# 运行所有框架测试
+make ut                    # 运行所有单元测试
+make ut_cov                # 运行所有覆盖率测试
+
 # CMocka 测试
-make ut                    # 运行测试并生成报告
-make ut_cov                # 运行测试并生成覆盖率报告
+make ut_cmocka             # 运行测试并生成报告
+make ut_cmocka_cov         # 运行测试并生成覆盖率报告
 
 # Unity + fff 测试
 make ut_unity              # 运行测试并生成报告
@@ -119,7 +123,7 @@ make clean         # 清理所有构建产物
 
 | 框架 | 测试报告 | 覆盖率报告 |
 |------|---------|-----------|
-| CMocka | `build/ut-report/` | `build/coverage-cmocka-report/` |
+| CMocka | `build/ut-cmocka-report/` | `build/coverage-cmocka-report/` |
 | Unity + fff | `build/ut-unity-report/` | `build/coverage-unity-report/` |
 | GoogleTest + GMock | `build/ut-gtest-report/` | `build/coverage-gtest-report/` |
 | GoogleTest + MockCpp | `build/ut-gtest-mockcpp-report/` | `build/coverage-gtest-mockcpp-report/` |

@@ -39,6 +39,22 @@ include ut_gtest_mockcpp/ut_cov.mk
 .PHONY: all
 all: sdk
 
+# Run all unit tests (all frameworks)
+.PHONY: ut
+ut: ut_cmocka ut_unity ut_gtest ut_gtest_mockcpp
+	@echo ""
+	@echo "========================================"
+	@echo "All Unit Tests Completed!"
+	@echo "========================================"
+
+# Run all coverage tests (all frameworks)
+.PHONY: ut_cov
+ut_cov: ut_cmocka_cov ut_unity_cov ut_gtest_cov ut_gtest_mockcpp_cov
+	@echo ""
+	@echo "========================================"
+	@echo "All Coverage Reports Generated!"
+	@echo "========================================"
+
 # Clean target
 .PHONY: clean
 clean:
@@ -53,17 +69,21 @@ help:
 	@echo "  make app           - Build application executable"
 	@echo "  make run           - Build and run the application"
 	@echo ""
-	@echo "  CMocka unit tests:"
-	@echo "  make ut            - Build and run cmocka unit tests"
-	@echo "  make ut_build      - Build cmocka tests only (without running)"
-	@echo "  make ut_run        - Run cmocka tests (terminal output)"
-	@echo "  make ut_report     - Generate cmocka test reports"
+	@echo "  All frameworks:"
+	@echo "  make ut            - Run all unit tests (all frameworks)"
+	@echo "  make ut_cov        - Run all coverage tests (all frameworks)"
 	@echo ""
-	@echo "  Code coverage:"
-	@echo "  make ut_cov        - Run tests and generate coverage report"
-	@echo "  make ut_cov_run    - Run coverage tests only"
-	@echo "  make ut_cov_report - Generate HTML coverage report"
-	@echo "  make clean-cov     - Clean coverage artifacts"
+	@echo "  CMocka unit tests:"
+	@echo "  make ut_cmocka      - Build and run CMocka unit tests"
+	@echo "  make ut_cmocka_build - Build CMocka tests only (without running)"
+	@echo "  make ut_cmocka_run  - Run CMocka tests (terminal output)"
+	@echo "  make ut_cmocka_report - Generate CMocka test reports"
+	@echo ""
+	@echo "  CMocka code coverage:"
+	@echo "  make ut_cmocka_cov  - Run tests and generate coverage report"
+	@echo "  make ut_cmocka_cov_run - Run coverage tests only"
+	@echo "  make ut_cmocka_cov_report - Generate HTML coverage report"
+	@echo "  make clean-cmocka-cov - Clean coverage artifacts"
 	@echo ""
 	@echo "  Unity + fff unit tests:"
 	@echo "  make ut_unity      - Build and run Unity + fff tests"
